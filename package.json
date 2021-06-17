@@ -1,0 +1,23 @@
+{
+  "name": "sasquare-reasonml",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rescript",
+    "start": "rescript build -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makoru-hikage/sasquare-reasonml.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makoru-hikage/sasquare-reasonml/issues"
+  },
+  "homepage": "https://github.com/makoru-hikage/sasquare-reasonml#readme",
+  "devDependencies": {
+    "rescript": "^9.1.4"
+  }
+}
