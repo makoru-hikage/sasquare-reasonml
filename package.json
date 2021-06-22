@@ -2,10 +2,11 @@
   "name": "sasquare-reasonml",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "rescript",
-    "start": "rescript build -w"
+    "start": "rescript build -w",
+    "pretest": "rescript build -with-deps",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,15 @@
   },
   "homepage": "https://github.com/makoru-hikage/sasquare-reasonml#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
+    "@glennsl/bs-jest": "^0.7.0",
+    "babel-core": "^6.26.3",
+    "jest": "^27.0.4",
     "rescript": "^9.1.4"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
