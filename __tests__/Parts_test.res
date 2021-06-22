@@ -28,7 +28,7 @@ describe("Two basic parts don't belong to the same square ", () => {
 describe("Cell is valid", () => {
   open Expect
 
-  test ("parts_of_diff_square", () => {
+  test ("cell_is_valid", () => {
       let cell: Cell.cell = (5, 27)
 
       expect(Cell.isValid(cell)) |> toBe(false)

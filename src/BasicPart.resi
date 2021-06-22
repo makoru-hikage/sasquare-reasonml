@@ -1,5 +1,5 @@
-type part = (int, int)
+type index_pair = (int, int)
 
-let getBase: part => int
-let getIndex: part => int
-let sameSquare: (part, part) => bool
+let getBase: index_pair => int
+let getIndex: index_pair => int
+let sameSquare: (index_pair, index_pair) => bool

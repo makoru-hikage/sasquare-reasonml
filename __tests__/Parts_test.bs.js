@@ -30,7 +30,7 @@ Jest.describe("Two basic parts don't belong to the same square ", (function (par
       }));
 
 Jest.describe("Cell is valid", (function (param) {
-        return Jest.test("parts_of_diff_square", (function (param) {
+        return Jest.test("cell_is_valid", (function (param) {
                       return Jest.Expect.toBe(false, Jest.Expect.expect(Cell.isValid([
                                           5,
                                           27

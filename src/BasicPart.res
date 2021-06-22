@@ -1,12 +1,15 @@
-type part = (int, int)
+type base = int
+type index = int
 
-let getBase = (part) => {
-    let (base, _) = part
+type index_pair = (base, index)
+
+let getBase = (index_pair) => {
+    let (base, _) = index_pair
     base
 }
 
-let getIndex = part => {
-    let (_, index) = part
+let getIndex = index_pair => {
+    let (_, index) = index_pair
     index
 }
 
