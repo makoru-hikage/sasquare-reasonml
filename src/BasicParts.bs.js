@@ -2,9 +2,19 @@
 'use strict';
 
 
-function isValid(cell) {
-  return cell.index <= Math.imul(cell.base, cell.base);
+function getBase(part) {
+  return part[0];
 }
 
-exports.isValid = isValid;
+function getIndex(part) {
+  return part[1];
+}
+
+function sameSquare(part1, part2) {
+  return part1[0] === part2[0];
+}
+
+exports.getBase = getBase;
+exports.getIndex = getIndex;
+exports.sameSquare = sameSquare;
 /* No side effect */
