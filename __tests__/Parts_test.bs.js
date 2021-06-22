@@ -2,11 +2,11 @@
 'use strict';
 
 var Jest = require("@glennsl/bs-jest/src/jest.bs.js");
-var BasicParts = require("../src/BasicParts.bs.js");
+var BasicPart = require("../src/BasicPart.bs.js");
 
 Jest.describe("Two basic parts belong to the same square ", (function (param) {
         return Jest.test("parts_of_same_square", (function (param) {
-                      return Jest.Expect.toBe(true, Jest.Expect.expect(BasicParts.sameSquare([
+                      return Jest.Expect.toBe(true, Jest.Expect.expect(BasicPart.sameSquare([
                                           5,
                                           17
                                         ], [
@@ -18,7 +18,7 @@ Jest.describe("Two basic parts belong to the same square ", (function (param) {
 
 Jest.describe("Two basic parts don't belong to the same square ", (function (param) {
         return Jest.test("parts_of_diff_square", (function (param) {
-                      return Jest.Expect.toBe(false, Jest.Expect.expect(BasicParts.sameSquare([
+                      return Jest.Expect.toBe(false, Jest.Expect.expect(BasicPart.sameSquare([
                                           5,
                                           14
                                         ], [
