@@ -11,7 +11,5 @@ let getIndex = part => {
 }
 
 let sameSquare = (part1, part2) => {
-    let (baseOfPart1, _) = part1
-    let (baseOfPart2, _) = part2
-    baseOfPart1 === baseOfPart2
+    getBase(part1) === getBase(part2)
 }
