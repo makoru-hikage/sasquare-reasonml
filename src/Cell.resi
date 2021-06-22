@@ -1,3 +1,3 @@
-type cell = (int, int)
+include (module type of BasicPart)
 
-let isValid: cell => bool
+let isValid: part => bool

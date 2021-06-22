@@ -1,18 +1,10 @@
-type base = int
-type index = int
-
-type index_pair = (base, index)
-
-let getBase = (index_pair) => {
-    let (base, _) = index_pair
-    base
+type part = {
+    base: int,
+    index: int
 }
 
-let getIndex = index_pair => {
-    let (_, index) = index_pair
-    index
-}
+let getBase = part => part.base
 
-let sameSquare = (part1, part2) => {
-    getBase(part1) === getBase(part2)
-}
+let getIndex = part => part.index
+
+let sameSquare = (part1, part2) => part1.base === part2.base

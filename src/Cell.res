@@ -1,8 +1,7 @@
-
-type cell = (int, int)
+include BasicPart
 
 let isValid = (cell) => {
-    let base = BasicPart.getBase(cell)
-    let index = BasicPart.getIndex(cell)
+    let base = getBase(cell)
+    let index = getIndex(cell)
     index <= base*base
 }

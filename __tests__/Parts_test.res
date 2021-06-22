@@ -1,16 +1,14 @@
 open Jest
 
-open BasicPart
-
 
 describe("Two basic parts belong to the same square ", () => {
   open Expect
 
   test ("parts_of_same_square", () => {
-      let part1: Cell.cell = (5, 17)
-      let part2: Cell.cell = (5, 12)
+      let part1: Cell.part = { base: 5, index: 17 }
+      let part2: Cell.part = { base: 5, index: 15 }
 
-      expect(sameSquare(part1, part2)) |> toBe(true)
+      expect(Cell.sameSquare(part1, part2)) |> toBe(true)
     })
 })
 
@@ -18,10 +16,10 @@ describe("Two basic parts don't belong to the same square ", () => {
   open Expect
 
   test ("parts_of_diff_square", () => {
-      let part1: Cell.cell = (5, 14)
-      let part2: Cell.cell = (6, 9)
+      let part1: Cell.part = { base: 5, index: 15 }
+      let part2: Cell.part = { base: 6, index: 9 }
 
-      expect(sameSquare(part1, part2)) |> toBe(false)
+      expect(Cell.sameSquare(part1, part2)) |> toBe(false)
     })
 })
 
@@ -29,10 +27,8 @@ describe("Cell is valid", () => {
   open Expect
 
   test ("cell_is_valid", () => {
-      let cell: Cell.cell = (5, 27)
+      let cell: Cell.part = { base: 5, index: 27 }
 
       expect(Cell.isValid(cell)) |> toBe(false)
     })
 })
-
-

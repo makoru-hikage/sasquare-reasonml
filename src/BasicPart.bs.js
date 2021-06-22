@@ -2,16 +2,16 @@
 'use strict';
 
 
-function getBase(index_pair) {
-  return index_pair[0];
+function getBase(part) {
+  return part.base;
 }
 
-function getIndex(index_pair) {
-  return index_pair[1];
+function getIndex(part) {
+  return part.index;
 }
 
 function sameSquare(part1, part2) {
-  return getBase(part1) === getBase(part2);
+  return part1.base === part2.base;
 }
 
 exports.getBase = getBase;

@@ -9,5 +9,14 @@ function isValid(cell) {
   return index <= Math.imul(base, base);
 }
 
+var getBase = BasicPart.getBase;
+
+var getIndex = BasicPart.getIndex;
+
+var sameSquare = BasicPart.sameSquare;
+
+exports.getBase = getBase;
+exports.getIndex = getIndex;
+exports.sameSquare = sameSquare;
 exports.isValid = isValid;
 /* No side effect */
