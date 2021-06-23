@@ -40,17 +40,15 @@ Jest.describe("Cell is valid", (function (param) {
 
 Jest.describe("All row-col pairs of 5-square", (function (param) {
         return Jest.test("5-square_row-col_pairs", (function (param) {
-                      var allCells = Belt_List.map(Belt_List.makeBy(25, (function (i) {
-                                  return i + 1 | 0;
-                                })), (function (x) {
+                      var oneToBaseSquared = Belt_List.makeBy(25, (function (i) {
+                              return i + 1 | 0;
+                            }));
+                      var allCells = Belt_List.map(oneToBaseSquared, (function (x) {
                               return Cell.rowColumnPair({
                                           base: 5,
                                           index: x
                                         });
                             }));
-                      console.log(Belt_List.makeBy(25, (function (i) {
-                                  return i + 1 | 0;
-                                })));
                       return Jest.Expect.toEqual({
                                   hd: [
                                     1,

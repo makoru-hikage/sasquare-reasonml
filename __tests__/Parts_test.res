@@ -38,8 +38,10 @@ describe("All row-col pairs of 5-square", () => {
 
   test ("5-square_row-col_pairs", () => {
       let base = 5
+      let oneToBaseSquared = Belt.List.makeBy(base*base, i => i+1)
       let allCells: list<(int,int)> = Belt.List.map(
-        Belt.List.makeBy(base*base, i => i+1),
+        // Simply make a list of numbers 1 to base^2
+        oneToBaseSquared,
         (x) => {
           let cell: Cell.part = {base: base, index: x}
           Cell.rowColumnPair(cell)
