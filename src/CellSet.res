@@ -1,0 +1,1 @@
+let intersection = (b, r, c) : Cell.part => { base: b, index: b*r - b + c }

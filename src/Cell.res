@@ -19,5 +19,3 @@ let columnIndex = (cell) => {
 }
 
 let rowColumnPair = (cell) => (rowIndex(cell), columnIndex(cell))
-
-let intersection = (b, r, c) : part => { base: b, index: b*r - b + c }
