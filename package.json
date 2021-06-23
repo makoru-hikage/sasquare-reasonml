@@ -6,7 +6,7 @@
     "build": "rescript",
     "start": "rescript build -w",
     "pretest": "rescript build -with-deps",
-    "test": "jest"
+    "test": "rescript build -with-deps && jest"
   },
   "repository": {
     "type": "git",
