@@ -8,7 +8,7 @@ describe("Two basic parts belong to the same square ", () => {
       let part1: Cell.part = { base: 5, index: 17 }
       let part2: Cell.part = { base: 5, index: 15 }
 
-      expect(Cell.sameSquare(part1, part2)) |> toBe(true)
+      toBe(true, expect(Cell.sameSquare(part1, part2)))
     })
 })
 
@@ -19,7 +19,7 @@ describe("Two basic parts don't belong to the same square ", () => {
       let part1: Cell.part = { base: 5, index: 15 }
       let part2: Cell.part = { base: 6, index: 9 }
 
-      expect(Cell.sameSquare(part1, part2)) |> toBe(false)
+      toBe(false, expect(Cell.sameSquare(part1, part2)))
     })
 })
 
@@ -29,7 +29,7 @@ describe("Cell is valid", () => {
   test ("cell_is_valid", () => {
       let cell: Cell.part = { base: 5, index: 27 }
 
-      expect(Cell.isValid(cell)) |> toBe(false)
+      toBe(false, expect(Cell.isValid(cell)))
     })
 })
 
@@ -47,13 +47,13 @@ describe("All row-col pairs of 5-square", () => {
           Cell.rowColumnPair(cell)
         })
 
-      expect(allCells) |> toEqual(list{
+       toEqual(list{
         (1,1), (1,2), (1,3), (1,4), (1,5),
         (2,1), (2,2), (2,3), (2,4), (2,5),
         (3,1), (3,2), (3,3), (3,4), (3,5),
         (4,1), (4,2), (4,3), (4,4), (4,5),
         (5,1), (5,2), (5,3), (5,4), (5,5)
-      })
+      }, expect(allCells))
     })
 })
 
@@ -79,7 +79,7 @@ describe("All cells of all rows of 5-square", () => {
     )->List.flatten
     ->List.map(Cell.getIndex)
 
-    expect(allRows) |> toEqual(List.flatten(supposedRows))
+    toEqual(List.flatten(supposedRows), expect(allRows))
   })
 })
 
@@ -105,7 +105,7 @@ describe("All cells of all columns of 5-square", () => {
     )->List.flatten
     ->List.map(Cell.getIndex)
 
-    expect(allColumns) |> toEqual(List.flatten(supposedColumns))
+    toEqual(List.flatten(supposedColumns), expect(allColumns))
   })
 })
 
@@ -117,18 +117,21 @@ describe("All base-row-col tuple to cell indices of 5-square", () => {
     let base = 5
     let oneToBase = List.makeBy(base, i => i+1)
 
+    // Just create Cells using the Intersection function
     let a = List.map(oneToBase, x => CellSet.intersection(base,_,x))
+    // `y => List.map(a, x => x(y))` is to map `apply` func
     let b = List.map(oneToBase, y => List.map(a, x => x(y)))
       ->List.flatten
+      // get that Base-Index pair
       ->List.map(x => (Cell.getBase(x), Cell.getIndex(x)))
 
-    expect (b) |> toEqual(list{
+    toEqual(list{
       (5,1), (5,2), (5,3), (5,4), (5,5),
       (5,6), (5,7), (5,8), (5,9), (5,10),
       (5,11), (5,12), (5,13), (5,14), (5,15),
       (5,16), (5,17), (5,18), (5,19), (5,20),
       (5,21), (5,22), (5,23), (5,24), (5,25)
-    })
+    }, expect(b))
 
   })
 })
