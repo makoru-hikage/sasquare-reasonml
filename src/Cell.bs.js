@@ -29,6 +29,21 @@ function rowColumnPair(cell) {
         ];
 }
 
+function baseRowColTriplet(cell) {
+  return [
+          BasicPart.getBase(cell),
+          rowIndex(cell),
+          columnIndex(cell)
+        ];
+}
+
+function intersection(b, r, c) {
+  return {
+          base: b,
+          index: (Math.imul(b, r) - b | 0) + c | 0
+        };
+}
+
 var getBase = BasicPart.getBase;
 
 var getIndex = BasicPart.getIndex;
@@ -42,4 +57,6 @@ exports.isValid = isValid;
 exports.rowIndex = rowIndex;
 exports.columnIndex = columnIndex;
 exports.rowColumnPair = rowColumnPair;
+exports.baseRowColTriplet = baseRowColTriplet;
+exports.intersection = intersection;
 /* No side effect */

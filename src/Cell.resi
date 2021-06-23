@@ -7,3 +7,5 @@ let rowIndex: part => int
 let columnIndex: part => int
 
 let rowColumnPair: part => (int, int)
+
+let intersection: (int, int, int) => part
