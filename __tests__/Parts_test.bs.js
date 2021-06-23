@@ -3,6 +3,8 @@
 
 var Cell = require("../src/Cell.bs.js");
 var Jest = require("@glennsl/bs-jest/src/jest.bs.js");
+var Curry = require("rescript/lib/js/curry.js");
+var CellSet = require("../src/CellSet.bs.js");
 var Belt_List = require("rescript/lib/js/belt_List.js");
 
 Jest.describe("Two basic parts belong to the same square ", (function (param) {
@@ -200,6 +202,388 @@ Jest.describe("All row-col pairs of 5-square", (function (param) {
                                     }
                                   }
                                 }, Jest.Expect.expect(allCells));
+                    }));
+      }));
+
+Jest.describe("All cells of all rows of 5-square", (function (param) {
+        return Jest.test("cells_of_rows", (function (param) {
+                      var oneToBase = Belt_List.makeBy(5, (function (n) {
+                              return n + 1 | 0;
+                            }));
+                      var supposedRows_0 = {
+                        hd: 1,
+                        tl: {
+                          hd: 2,
+                          tl: {
+                            hd: 3,
+                            tl: {
+                              hd: 4,
+                              tl: {
+                                hd: 5,
+                                tl: /* [] */0
+                              }
+                            }
+                          }
+                        }
+                      };
+                      var supposedRows_1 = {
+                        hd: {
+                          hd: 6,
+                          tl: {
+                            hd: 7,
+                            tl: {
+                              hd: 8,
+                              tl: {
+                                hd: 9,
+                                tl: {
+                                  hd: 10,
+                                  tl: /* [] */0
+                                }
+                              }
+                            }
+                          }
+                        },
+                        tl: {
+                          hd: {
+                            hd: 11,
+                            tl: {
+                              hd: 12,
+                              tl: {
+                                hd: 13,
+                                tl: {
+                                  hd: 14,
+                                  tl: {
+                                    hd: 15,
+                                    tl: /* [] */0
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          tl: {
+                            hd: {
+                              hd: 16,
+                              tl: {
+                                hd: 17,
+                                tl: {
+                                  hd: 18,
+                                  tl: {
+                                    hd: 19,
+                                    tl: {
+                                      hd: 20,
+                                      tl: /* [] */0
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            tl: {
+                              hd: {
+                                hd: 21,
+                                tl: {
+                                  hd: 22,
+                                  tl: {
+                                    hd: 23,
+                                    tl: {
+                                      hd: 24,
+                                      tl: {
+                                        hd: 25,
+                                        tl: /* [] */0
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              tl: /* [] */0
+                            }
+                          }
+                        }
+                      };
+                      var supposedRows = {
+                        hd: supposedRows_0,
+                        tl: supposedRows_1
+                      };
+                      var allRows = Belt_List.map(Belt_List.flatten(Belt_List.map(oneToBase, (function (param) {
+                                      return CellSet.rowCells(5, param);
+                                    }))), Cell.getIndex);
+                      return Jest.Expect.toEqual(Belt_List.flatten(supposedRows), Jest.Expect.expect(allRows));
+                    }));
+      }));
+
+Jest.describe("All cells of all columns of 5-square", (function (param) {
+        return Jest.test("cells_of_columns", (function (param) {
+                      var oneToBase = Belt_List.makeBy(5, (function (n) {
+                              return n + 1 | 0;
+                            }));
+                      var supposedColumns_0 = {
+                        hd: 1,
+                        tl: {
+                          hd: 6,
+                          tl: {
+                            hd: 11,
+                            tl: {
+                              hd: 16,
+                              tl: {
+                                hd: 21,
+                                tl: /* [] */0
+                              }
+                            }
+                          }
+                        }
+                      };
+                      var supposedColumns_1 = {
+                        hd: {
+                          hd: 2,
+                          tl: {
+                            hd: 7,
+                            tl: {
+                              hd: 12,
+                              tl: {
+                                hd: 17,
+                                tl: {
+                                  hd: 22,
+                                  tl: /* [] */0
+                                }
+                              }
+                            }
+                          }
+                        },
+                        tl: {
+                          hd: {
+                            hd: 3,
+                            tl: {
+                              hd: 8,
+                              tl: {
+                                hd: 13,
+                                tl: {
+                                  hd: 18,
+                                  tl: {
+                                    hd: 23,
+                                    tl: /* [] */0
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          tl: {
+                            hd: {
+                              hd: 4,
+                              tl: {
+                                hd: 9,
+                                tl: {
+                                  hd: 14,
+                                  tl: {
+                                    hd: 19,
+                                    tl: {
+                                      hd: 24,
+                                      tl: /* [] */0
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            tl: {
+                              hd: {
+                                hd: 5,
+                                tl: {
+                                  hd: 10,
+                                  tl: {
+                                    hd: 15,
+                                    tl: {
+                                      hd: 20,
+                                      tl: {
+                                        hd: 25,
+                                        tl: /* [] */0
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              tl: /* [] */0
+                            }
+                          }
+                        }
+                      };
+                      var supposedColumns = {
+                        hd: supposedColumns_0,
+                        tl: supposedColumns_1
+                      };
+                      var allColumns = Belt_List.map(Belt_List.flatten(Belt_List.map(oneToBase, (function (param) {
+                                      return CellSet.columnCells(5, param);
+                                    }))), Cell.getIndex);
+                      return Jest.Expect.toEqual(Belt_List.flatten(supposedColumns), Jest.Expect.expect(allColumns));
+                    }));
+      }));
+
+Jest.describe("All base-row-col tuple to cell indices of 5-square", (function (param) {
+        return Jest.test("b-r-c_to_b-n", (function (param) {
+                      var oneToBase = Belt_List.makeBy(5, (function (i) {
+                              return i + 1 | 0;
+                            }));
+                      var a = Belt_List.map(oneToBase, (function (x, __x) {
+                              return CellSet.intersection(5, __x, x);
+                            }));
+                      var b = Belt_List.map(Belt_List.flatten(Belt_List.map(oneToBase, (function (y) {
+                                      return Belt_List.map(a, (function (x) {
+                                                    return Curry._1(x, y);
+                                                  }));
+                                    }))), (function (x) {
+                              return [
+                                      Cell.getBase(x),
+                                      Cell.getIndex(x)
+                                    ];
+                            }));
+                      return Jest.Expect.toEqual({
+                                  hd: [
+                                    5,
+                                    1
+                                  ],
+                                  tl: {
+                                    hd: [
+                                      5,
+                                      2
+                                    ],
+                                    tl: {
+                                      hd: [
+                                        5,
+                                        3
+                                      ],
+                                      tl: {
+                                        hd: [
+                                          5,
+                                          4
+                                        ],
+                                        tl: {
+                                          hd: [
+                                            5,
+                                            5
+                                          ],
+                                          tl: {
+                                            hd: [
+                                              5,
+                                              6
+                                            ],
+                                            tl: {
+                                              hd: [
+                                                5,
+                                                7
+                                              ],
+                                              tl: {
+                                                hd: [
+                                                  5,
+                                                  8
+                                                ],
+                                                tl: {
+                                                  hd: [
+                                                    5,
+                                                    9
+                                                  ],
+                                                  tl: {
+                                                    hd: [
+                                                      5,
+                                                      10
+                                                    ],
+                                                    tl: {
+                                                      hd: [
+                                                        5,
+                                                        11
+                                                      ],
+                                                      tl: {
+                                                        hd: [
+                                                          5,
+                                                          12
+                                                        ],
+                                                        tl: {
+                                                          hd: [
+                                                            5,
+                                                            13
+                                                          ],
+                                                          tl: {
+                                                            hd: [
+                                                              5,
+                                                              14
+                                                            ],
+                                                            tl: {
+                                                              hd: [
+                                                                5,
+                                                                15
+                                                              ],
+                                                              tl: {
+                                                                hd: [
+                                                                  5,
+                                                                  16
+                                                                ],
+                                                                tl: {
+                                                                  hd: [
+                                                                    5,
+                                                                    17
+                                                                  ],
+                                                                  tl: {
+                                                                    hd: [
+                                                                      5,
+                                                                      18
+                                                                    ],
+                                                                    tl: {
+                                                                      hd: [
+                                                                        5,
+                                                                        19
+                                                                      ],
+                                                                      tl: {
+                                                                        hd: [
+                                                                          5,
+                                                                          20
+                                                                        ],
+                                                                        tl: {
+                                                                          hd: [
+                                                                            5,
+                                                                            21
+                                                                          ],
+                                                                          tl: {
+                                                                            hd: [
+                                                                              5,
+                                                                              22
+                                                                            ],
+                                                                            tl: {
+                                                                              hd: [
+                                                                                5,
+                                                                                23
+                                                                              ],
+                                                                              tl: {
+                                                                                hd: [
+                                                                                  5,
+                                                                                  24
+                                                                                ],
+                                                                                tl: {
+                                                                                  hd: [
+                                                                                    5,
+                                                                                    25
+                                                                                  ],
+                                                                                  tl: /* [] */0
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }, Jest.Expect.expect(b));
                     }));
       }));
 
