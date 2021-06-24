@@ -39,7 +39,7 @@ describe("All row-col pairs of 5-square", () => {
   test ("5-square_row-col_pairs", () => {
       let base = 5
       // Simply make a list of numbers 1 to base^2
-      let oneToBaseSquared = Belt.List.makeBy(base*base, i => i+1)
+      let oneToBaseSquared = Util.oneToN(base*base)
       let allCells: list<(int,int)> = Belt.List.map(
         oneToBaseSquared,
         (x) => {
@@ -63,7 +63,7 @@ describe("All cells of all rows of 5-square", () => {
 
   test ("cells_of_rows", () => {
     let base = 5
-    let oneToBase = List.makeBy(base, n => n + 1)
+    let oneToBase = Util.oneToN(base)
 
     let row1 = list{1,2,3,4,5}
     let row2 = list{6,7,8,9,10}
@@ -89,7 +89,7 @@ describe("All cells of all columns of 5-square", () => {
 
   test ("cells_of_columns", () => {
     let base = 5
-    let oneToBase = List.makeBy(base, n => n + 1)
+    let oneToBase = Util.oneToN(base)
 
     let col1 = list{1,6,11,16,21}
     let col2 = list{2,7,12,17,22}

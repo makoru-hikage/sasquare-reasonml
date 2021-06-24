@@ -3,6 +3,7 @@
 
 var Cell = require("../src/Cell.bs.js");
 var Jest = require("@glennsl/bs-jest/src/jest.bs.js");
+var Util = require("../src/Util.bs.js");
 var Curry = require("rescript/lib/js/curry.js");
 var CellSet = require("../src/CellSet.bs.js");
 var Belt_List = require("rescript/lib/js/belt_List.js");
@@ -42,9 +43,7 @@ Jest.describe("Cell is valid", (function (param) {
 
 Jest.describe("All row-col pairs of 5-square", (function (param) {
         return Jest.test("5-square_row-col_pairs", (function (param) {
-                      var oneToBaseSquared = Belt_List.makeBy(25, (function (i) {
-                              return i + 1 | 0;
-                            }));
+                      var oneToBaseSquared = Util.oneToN(25);
                       var allCells = Belt_List.map(oneToBaseSquared, (function (x) {
                               return Cell.rowColumnPair({
                                           base: 5,
@@ -207,9 +206,7 @@ Jest.describe("All row-col pairs of 5-square", (function (param) {
 
 Jest.describe("All cells of all rows of 5-square", (function (param) {
         return Jest.test("cells_of_rows", (function (param) {
-                      var oneToBase = Belt_List.makeBy(5, (function (n) {
-                              return n + 1 | 0;
-                            }));
+                      var oneToBase = Util.oneToN(5);
                       var supposedRows_0 = {
                         hd: 1,
                         tl: {
@@ -312,9 +309,7 @@ Jest.describe("All cells of all rows of 5-square", (function (param) {
 
 Jest.describe("All cells of all columns of 5-square", (function (param) {
         return Jest.test("cells_of_columns", (function (param) {
-                      var oneToBase = Belt_List.makeBy(5, (function (n) {
-                              return n + 1 | 0;
-                            }));
+                      var oneToBase = Util.oneToN(5);
                       var supposedColumns_0 = {
                         hd: 1,
                         tl: {
