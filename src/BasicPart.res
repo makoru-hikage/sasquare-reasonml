@@ -75,7 +75,7 @@ module Row: CellSet = {
     let getCells = (p) => {
         let b = getBase(p)
         let r = getIndex(p)
-        let oneToBase = List.makeBy(b, n => n + 1)
+        let oneToBase = Util.oneToN(b)
         List.keepMap(oneToBase, Cell.intersection(b,r))
     }
 }
@@ -87,7 +87,7 @@ module Column: CellSet = {
     let getCells = (p) => {
         let b = getBase(p)
         let c = getIndex(p)
-        let oneToBase = List.makeBy(b, n => n + 1)
+        let oneToBase = Util.oneToN(b)
         List.keepMap(oneToBase, Cell.intersection(b,_,c))
     }
 }
