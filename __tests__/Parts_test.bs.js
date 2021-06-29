@@ -424,7 +424,7 @@ Jest.describe("All base-row-col tuple to cell indices of 5-square", (function (p
                               return BasicPart.Cell.intersection(5, __x, x);
                             }));
                       var b = Belt_List.map(Belt_List.flatten(Belt_List.map(oneToBase, (function (y) {
-                                      return Belt_List.map(a, (function (x) {
+                                      return Belt_List.keepMap(a, (function (x) {
                                                     return Curry._1(x, y);
                                                   }));
                                     }))), (function (x) {

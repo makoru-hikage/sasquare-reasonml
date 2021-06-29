@@ -24,21 +24,27 @@ module Part: Index = {
 
 module Cell: {
         include Index
-        let intersection: (int, int, int) => p
+        let intersection: (int, int, int) => option<p>
         let isValid: p => bool
         let rowColumnPair: p => (int, int)
     } = {
     include Part
 
-    let intersection = (b, r, c): p => { 
-        base: b,
-        index: b*r - b + c 
-    }
-
     let isValid = (cell) => {
         let base = getBase(cell)
         let index = getIndex(cell)
         index <= base*base
+    }
+
+    let intersection = (b, r, c) => { 
+        let cell: p = {
+            base: b,
+            index: b*r - b + c
+        }
+
+        if isValid(cell) {
+            Some(cell)
+        } else { None }
     }
 
     let rowIndex = (cell) => {
@@ -70,7 +76,7 @@ module Row: CellSet = {
         let b = getBase(p)
         let r = getIndex(p)
         let oneToBase = List.makeBy(b, n => n + 1)
-        List.map(oneToBase, Cell.intersection(b,r))
+        List.keepMap(oneToBase, Cell.intersection(b,r))
     }
 }
 
@@ -82,6 +88,6 @@ module Column: CellSet = {
         let b = getBase(p)
         let c = getIndex(p)
         let oneToBase = List.makeBy(b, n => n + 1)
-        List.map(oneToBase, Cell.intersection(b,_,c))
+        List.keepMap(oneToBase, Cell.intersection(b,_,c))
     }
 }

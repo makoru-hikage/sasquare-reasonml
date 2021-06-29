@@ -22,17 +22,22 @@ var Part = {
   sameSquare: sameSquare
 };
 
-function intersection(b, r, c) {
-  return {
-          base: b,
-          index: (Math.imul(b, r) - b | 0) + c | 0
-        };
-}
-
 function isValid(cell) {
   var base = cell.base;
   var index = cell.index;
   return index <= Math.imul(base, base);
+}
+
+function intersection(b, r, c) {
+  var cell_index = (Math.imul(b, r) - b | 0) + c | 0;
+  var cell = {
+    base: b,
+    index: cell_index
+  };
+  if (isValid(cell)) {
+    return cell;
+  }
+  
 }
 
 function rowIndex(cell) {
@@ -69,7 +74,7 @@ function getCells(p) {
   var oneToBase = Belt_List.makeBy(b, (function (n) {
           return n + 1 | 0;
         }));
-  return Belt_List.map(oneToBase, (function (param) {
+  return Belt_List.keepMap(oneToBase, (function (param) {
                 return intersection(b, r, param);
               }));
 }
@@ -87,7 +92,7 @@ function getCells$1(p) {
   var oneToBase = Belt_List.makeBy(b, (function (n) {
           return n + 1 | 0;
         }));
-  return Belt_List.map(oneToBase, (function (__x) {
+  return Belt_List.keepMap(oneToBase, (function (__x) {
                 return intersection(b, __x, c);
               }));
 }

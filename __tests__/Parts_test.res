@@ -126,7 +126,7 @@ describe("All base-row-col tuple to cell indices of 5-square", () => {
       x => Cell.intersection(base,_,x)
     )
     // `y => List.map(a, x => x(y))` is to map `apply` func
-    let b = List.map(oneToBase, y => List.map(a, x => x(y)))
+    let b = List.map(oneToBase, y => List.keepMap(a, x => x(y)))
       ->List.flatten
       // get that Base-Index pair
       ->List.map(x => (Cell.getBase(x), Cell.getIndex(x)))
