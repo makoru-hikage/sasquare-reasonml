@@ -5,10 +5,10 @@ describe("Two basic parts belong to the same square ", () => {
   open Expect
 
   test ("parts_of_same_square", () => {
-      let part1: Cell.part = { base: 5, index: 17 }
-      let part2: Cell.part = { base: 5, index: 15 }
+      let part1: BasicPart.Cell.p = { base: 5, index: 17 }
+      let part2: BasicPart.Cell.p = { base: 5, index: 15 }
 
-      toBe(true, expect(Cell.sameSquare(part1, part2)))
+      toBe(true, expect(BasicPart.Cell.sameSquare(part1, part2)))
     })
 })
 
@@ -16,10 +16,10 @@ describe("Two basic parts don't belong to the same square ", () => {
   open Expect
 
   test ("parts_of_diff_square", () => {
-      let part1: Cell.part = { base: 5, index: 15 }
-      let part2: Cell.part = { base: 6, index: 9 }
+      let part1: BasicPart.Cell.p = { base: 5, index: 15 }
+      let part2: BasicPart.Cell.p = { base: 6, index: 9 }
 
-      toBe(false, expect(Cell.sameSquare(part1, part2)))
+      toBe(false, expect(BasicPart.Cell.sameSquare(part1, part2)))
     })
 })
 
@@ -27,9 +27,9 @@ describe("Cell is valid", () => {
   open Expect
 
   test ("cell_is_valid", () => {
-      let cell: Cell.part = { base: 5, index: 27 }
+      let cell: BasicPart.Cell.p = { base: 5, index: 27 }
 
-      toBe(false, expect(Cell.isValid(cell)))
+      toBe(false, expect(BasicPart.Cell.isValid(cell)))
     })
 })
 
@@ -43,8 +43,8 @@ describe("All row-col pairs of 5-square", () => {
       let allCells: list<(int,int)> = Belt.List.map(
         oneToBaseSquared,
         (x) => {
-          let cell: Cell.part = {base: base, index: x}
-          Cell.rowColumnPair(cell)
+          let cell: BasicPart.Cell.p = {base: base, index: x}
+          BasicPart.Cell.rowColumnPair(cell)
         })
 
        toEqual(list{
@@ -75,9 +75,10 @@ describe("All cells of all rows of 5-square", () => {
 
     let allRows = List.map(
       oneToBase,
-      CellSet.rowCells(base)
-    )->List.flatten
-    ->List.map(Cell.getIndex)
+      (x): BasicPart.Row.p => { base: base, index: x }
+    )->List.map(BasicPart.Row.getCells)
+    ->List.flatten
+    ->List.map(BasicPart.Cell.getIndex)
 
     toEqual(List.flatten(supposedRows), expect(allRows))
   })
@@ -101,9 +102,10 @@ describe("All cells of all columns of 5-square", () => {
 
     let allColumns = List.map(
       oneToBase,
-      CellSet.columnCells(base)
-    )->List.flatten
-    ->List.map(Cell.getIndex)
+      (x): BasicPart.Column.p => { base: base, index: x }
+    )->List.map(BasicPart.Column.getCells)
+    ->List.flatten
+    ->List.map(BasicPart.Cell.getIndex)
 
     toEqual(List.flatten(supposedColumns), expect(allColumns))
   })
@@ -112,13 +114,17 @@ describe("All cells of all columns of 5-square", () => {
 describe("All base-row-col tuple to cell indices of 5-square", () => {
   open Expect
   open Belt
+  open BasicPart
 
   test("b-r-c_to_b-n", () => {
     let base = 5
     let oneToBase = List.makeBy(base, i => i+1)
 
     // Just create Cells using the Intersection function
-    let a = List.map(oneToBase, x => CellSet.intersection(base,_,x))
+    let a = List.map(
+      oneToBase, 
+      x => Cell.intersection(base,_,x)
+    )
     // `y => List.map(a, x => x(y))` is to map `apply` func
     let b = List.map(oneToBase, y => List.map(a, x => x(y)))
       ->List.flatten
