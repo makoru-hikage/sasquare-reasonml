@@ -64,10 +64,18 @@ var Cell = {
   getBase: getBase,
   getIndex: getIndex,
   sameSquare: sameSquare,
-  intersection: intersection,
   isValid: isValid,
+  intersection: intersection,
   rowColumnPair: rowColumnPair
 };
+
+function isValid$1(p) {
+  if (1 <= p.index) {
+    return p.index <= p.base;
+  } else {
+    return false;
+  }
+}
 
 function getCells(p) {
   var b = p.base;
@@ -82,8 +90,17 @@ var Row = {
   getBase: getBase,
   getIndex: getIndex,
   sameSquare: sameSquare,
+  isValid: isValid$1,
   getCells: getCells
 };
+
+function isValid$2(p) {
+  if (1 <= p.index) {
+    return p.index <= p.base;
+  } else {
+    return false;
+  }
+}
 
 function getCells$1(p) {
   var b = p.base;
@@ -98,6 +115,7 @@ var Column = {
   getBase: getBase,
   getIndex: getIndex,
   sameSquare: sameSquare,
+  isValid: isValid$2,
   getCells: getCells$1
 };
 

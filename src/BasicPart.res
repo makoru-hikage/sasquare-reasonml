@@ -19,13 +19,15 @@ module type Index = {
     let getIndex: p => int
     /* Checks two parts whether they belong to the same square */
     let sameSquare: (p, p) => bool
+    /* Checks whether a part is valid */
+    let isValid: p => bool
 }
 
 /**
- * An implementation of Index to represent a basic part
- * of a Square
+ * A mixin to implement Index to represent the basic
+ * functions of a basic part of a Square
  */
-module Part: Index = {
+module Part = {
     type p = {
         base: int,
         index: int
@@ -44,7 +46,6 @@ module Part: Index = {
  */
 module Cell: {
         include Index
-        let isValid: p => bool
         let intersection: (int, int, int) => option<p>
         let rowColumnPair: p => (int, int)
     } = {
@@ -92,6 +93,8 @@ module Row: CellSet = {
     open Belt
     include Part
 
+    let isValid = p => 1 <= getIndex(p) && getIndex(p) <= getBase(p)
+
     let getCells = (p) => {
         let b = getBase(p)
         let r = getIndex(p)
@@ -103,6 +106,8 @@ module Row: CellSet = {
 module Column: CellSet = {
     open Belt
     include Part
+
+    let isValid = p => 1 <= getIndex(p) && getIndex(p) <= getBase(p)
 
     let getCells = (p) => {
         let b = getBase(p)
