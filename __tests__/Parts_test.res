@@ -177,3 +177,16 @@ describe("Another way to tell if a Cell belongs to a row", () => {
     toEqual(supposedRow, expect(rowOfCell12))
   })
 })
+
+describe("Another way to tell if a Cell belongs to a column", () => {
+  open Expect
+
+  test("cell_belongingness_by_its_column_index", () => {
+    let base = 5
+    let cell12: Cell.p = { base: base, index: 12 }
+    let columnOfCell12: Column.p = Column.columnOfCell(cell12)
+    let supposedColumn: Column.p = { base: base, index: 2 }
+
+    toEqual(supposedColumn, expect(columnOfCell12))
+  })
+})

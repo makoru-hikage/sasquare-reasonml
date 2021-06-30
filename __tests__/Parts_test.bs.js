@@ -633,4 +633,19 @@ Jest.describe("Another way to tell if a Cell belongs to a row", (function (param
                     }));
       }));
 
+Jest.describe("Another way to tell if a Cell belongs to a column", (function (param) {
+        return Jest.test("cell_belongingness_by_its_column_index", (function (param) {
+                      var cell12 = {
+                        base: 5,
+                        index: 12
+                      };
+                      var columnOfCell12 = Column.columnOfCell(cell12);
+                      var supposedColumn = {
+                        base: 5,
+                        index: 2
+                      };
+                      return Jest.Expect.toEqual(supposedColumn, Jest.Expect.expect(columnOfCell12));
+                    }));
+      }));
+
 /*  Not a pure module */
