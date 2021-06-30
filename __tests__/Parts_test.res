@@ -5,10 +5,10 @@ describe("Two basic parts belong to the same square ", () => {
   open Expect
 
   test ("parts_of_same_square", () => {
-      let part1: BasicPart.Cell.p = { base: 5, index: 17 }
-      let part2: BasicPart.Cell.p = { base: 5, index: 15 }
+      let part1: Cell.p = { base: 5, index: 17 }
+      let part2: Cell.p = { base: 5, index: 15 }
 
-      toBe(true, expect(BasicPart.Cell.sameSquare(part1, part2)))
+      toBe(true, expect(Cell.sameSquare(part1, part2)))
     })
 })
 
@@ -16,10 +16,10 @@ describe("Two basic parts don't belong to the same square ", () => {
   open Expect
 
   test ("parts_of_diff_square", () => {
-      let part1: BasicPart.Cell.p = { base: 5, index: 15 }
-      let part2: BasicPart.Cell.p = { base: 6, index: 9 }
+      let part1: Cell.p = { base: 5, index: 15 }
+      let part2: Cell.p = { base: 6, index: 9 }
 
-      toBe(false, expect(BasicPart.Cell.sameSquare(part1, part2)))
+      toBe(false, expect(Cell.sameSquare(part1, part2)))
     })
 })
 
@@ -27,9 +27,9 @@ describe("Cell is valid", () => {
   open Expect
 
   test ("cell_is_valid", () => {
-      let cell: BasicPart.Cell.p = { base: 5, index: 27 }
+      let cell: Cell.p = { base: 5, index: 27 }
 
-      toBe(false, expect(BasicPart.Cell.isValid(cell)))
+      toBe(false, expect(Cell.isValid(cell)))
     })
 })
 
@@ -43,8 +43,8 @@ describe("All row-col pairs of 5-square", () => {
       let allCells: list<(int,int)> = Belt.List.map(
         oneToBaseSquared,
         (x) => {
-          let cell: BasicPart.Cell.p = {base: base, index: x}
-          BasicPart.Cell.rowColumnPair(cell)
+          let cell: Cell.p = {base: base, index: x}
+          Cell.rowColumnPair(cell)
         })
 
        toEqual(list{
@@ -75,10 +75,10 @@ describe("All cells of all rows of 5-square", () => {
 
     let allRows = List.map(
       oneToBase,
-      (x): BasicPart.Row.p => { base: base, index: x }
-    )->List.map(BasicPart.Row.getCells)
+      (x): Straight.Row.p => { base: base, index: x }
+    )->List.map(Straight.Row.getCells)
     ->List.flatten
-    ->List.map(BasicPart.Cell.getIndex)
+    ->List.map(Cell.getIndex)
 
     toEqual(List.flatten(supposedRows), expect(allRows))
   })
@@ -102,10 +102,10 @@ describe("All cells of all columns of 5-square", () => {
 
     let allColumns = List.map(
       oneToBase,
-      (x): BasicPart.Column.p => { base: base, index: x }
-    )->List.map(BasicPart.Column.getCells)
+      (x): Straight.Column.p => { base: base, index: x }
+    )->List.map(Straight.Column.getCells)
     ->List.flatten
-    ->List.map(BasicPart.Cell.getIndex)
+    ->List.map(Cell.getIndex)
 
     toEqual(List.flatten(supposedColumns), expect(allColumns))
   })
@@ -123,7 +123,7 @@ describe("All base-row-col tuple to cell indices of 5-square", () => {
     // Just create Cells using the Intersection function
     let a = List.map(
       oneToBase, 
-      x => Cell.intersection(base,_,x)
+      x => Intersection.findByIntegers(base,_,x)
     )
     // `y => List.map(a, x => x(y))` is to map `apply` func
     let b = List.map(oneToBase, y => List.keepMap(a, x => x(y)))
@@ -144,7 +144,7 @@ describe("All base-row-col tuple to cell indices of 5-square", () => {
 
 describe("Cell 17 is in Row 4 of 5-Square", () => {
   open Expect
-  open BasicPart
+  open Straight
 
   test("cell-17_in_row-4", () => {
     let base = 5
@@ -157,7 +157,7 @@ describe("Cell 17 is in Row 4 of 5-Square", () => {
 
 describe("Cell 17 isn't in Column 5 of 5-Square", () => {
   open Expect
-  open BasicPart
+  open Straight
 
   test("cell-17_not_in_col-5", () => {
     let base = 5
@@ -167,3 +167,18 @@ describe("Cell 17 isn't in Column 5 of 5-Square", () => {
     toBe(false, expect(Column.hasCell(column, cell)))
   })
 })
+
+/* describe("Another way to tell if a Cell belongs to a row", () => {
+  open Belt
+  open Expect
+  open Straight
+
+  test("cell_belongingness_by_its_row_index", () => {
+    let base = 5
+    let cell12: Cell.p = { base: base, index: 12 }
+    let rowOfCell12: Row.p = Cell.getRow(cell)
+    let supposedRow: Row.p = { base: base, index: 2 }
+
+    toBe(supposedRow, expect(rowOfCell12))
+  })
+}) */
