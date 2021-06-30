@@ -7,20 +7,20 @@
  *
  */
 module type Index = {
-    /* p - depicts the part of a square */
-    type p = {
-        base: int,
-        index: int
-    }
+  /* p - depicts the part of a square */
+  type p = {
+    base: int,
+    index: int
+  }
 
-    /* An accessor to get the base */
-    let getBase: p => int
-    /* An accessor to get the part's index*/
-    let getIndex: p => int
-    /* Checks two parts whether they belong to the same square */
-    let sameSquare: (p, p) => bool
-    /* Checks whether a part is valid */
-    let isValid: p => bool
+  /* An accessor to get the base */
+  let getBase: p => int
+  /* An accessor to get the part's index*/
+  let getIndex: p => int
+  /* Checks two parts whether they belong to the same square */
+  let sameSquare: (p, p) => bool
+  /* Checks whether a part is valid */
+  let isValid: p => bool
 }
 
 /**
@@ -28,16 +28,16 @@ module type Index = {
  * functions of a basic part of a Square
  */
 module Part = {
-    type p = {
-        base: int,
-        index: int
-    }
+  type p = {
+    base: int,
+    index: int
+  }
 
-    let getBase = p => p.base
+  let getBase = p => p.base
 
-    let getIndex = p => p.index
+  let getIndex = p => p.index
 
-    let sameSquare = (p1, p2) => p1.base === p2.base
+  let sameSquare = (p1, p2) => p1.base === p2.base
 }
 
 /**
@@ -45,42 +45,54 @@ module Part = {
  * An index to represent an element of a Square
  */
 module Cell: {
-        include Index
-        let intersection: (int, int, int) => option<p>
-        let rowColumnPair: p => (int, int)
-    } = {
-    include Part
 
-    let isValid = (cell) => {
-        let base = getBase(cell)
-        let index = getIndex(cell)
-        index <= base*base
+  include Index
+
+  /**
+    * A function to determine a cell index
+    * by a triplet of base, row index, and 
+    * column index.
+    *
+    */
+  let intersection: (int, int, int) => option<p>
+
+  /** 
+    * Returns a row column pair like the one found
+    * in a matrix element index
+    */
+  let rowColumnPair: p => (int, int)
+
+} = {
+  include Part
+
+  let isValid = (cell) => {
+    let base = getBase(cell)
+    let index = getIndex(cell)
+    index <= base*base
+  }
+
+  let intersection = (b, r, c) => { 
+    let cell: p = {
+      base: b,
+      index: b*r - b + c
     }
 
-    let intersection = (b, r, c) => { 
-        let cell: p = {
-            base: b,
-            index: b*r - b + c
-        }
+    isValid(cell) ? Some(cell) : None 
+  }
 
-        if isValid(cell) {
-            Some(cell)
-        } else { None }
-    }
+  let rowIndex = (cell) => {
+    let base = Js.Int.toFloat(getBase(cell))
+    let index = Js.Int.toFloat(getIndex(cell))
+    Js.Math.ceil_int(index/.base)
+  }
 
-    let rowIndex = (cell) => {
-        let base = Js.Int.toFloat(getBase(cell))
-        let index = Js.Int.toFloat(getIndex(cell))
-        Js.Math.ceil_int(index/.base)
-    }
+  let columnIndex = (cell) => {
+    let base = getBase(cell)
+    let index = getIndex(cell)
+    index + base - base*rowIndex(cell)
+  }
 
-    let columnIndex = (cell) => {
-        let base = getBase(cell)
-        let index = getIndex(cell)
-        index + base - base*rowIndex(cell)
-    }
-
-    let rowColumnPair = (cell) => (rowIndex(cell), columnIndex(cell))
+  let rowColumnPair = (cell) => (rowIndex(cell), columnIndex(cell))
 }
 
 module type CellSet = {
