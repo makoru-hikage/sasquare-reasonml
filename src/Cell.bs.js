@@ -40,5 +40,7 @@ exports.getBase = getBase;
 exports.getIndex = getIndex;
 exports.sameSquare = sameSquare;
 exports.isValid = isValid;
+exports.rowIndex = rowIndex;
+exports.columnIndex = columnIndex;
 exports.rowColumnPair = rowColumnPair;
 /* No side effect */
