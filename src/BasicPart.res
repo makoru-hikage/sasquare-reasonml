@@ -1,14 +1,30 @@
+/**
+ * A pair of integers represented as a record.
+ *
+ * The base represents the base of the square
+ * where a part belongs to. The index represents
+ * the part's index itself.
+ *
+ */
 module type Index = {
+    /* p - depicts the part of a square */
     type p = {
         base: int,
         index: int
     }
 
+    /* An accessor to get the base */
     let getBase: p => int
+    /* An accessor to get the part's index*/
     let getIndex: p => int
+    /* Checks two parts whether they belong to the same square */
     let sameSquare: (p, p) => bool
 }
 
+/**
+ * An implementation of Index to represent a basic part
+ * of a Square
+ */
 module Part: Index = {
     type p = {
         base: int,
@@ -22,10 +38,14 @@ module Part: Index = {
     let sameSquare = (p1, p2) => p1.base === p2.base
 }
 
+/**
+ * The basic building block of a Square
+ * An index to represent an element of a Square
+ */
 module Cell: {
         include Index
-        let intersection: (int, int, int) => option<p>
         let isValid: p => bool
+        let intersection: (int, int, int) => option<p>
         let rowColumnPair: p => (int, int)
     } = {
     include Part
