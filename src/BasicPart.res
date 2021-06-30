@@ -57,8 +57,11 @@ module Cell: {
   let intersection: (int, int, int) => option<p>
 
   /** 
-    * Returns a row column pair like the one found
-    * in a matrix element index
+    * Returns a row-column pair like the one found
+    * in a matrix element index. 
+    *
+    * Basically represents the row and column a 
+    * cell belongs.
     */
   let rowColumnPair: p => (int, int)
 
