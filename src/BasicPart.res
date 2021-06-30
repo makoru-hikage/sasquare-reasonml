@@ -95,12 +95,22 @@ module Cell: {
   let rowColumnPair = (cell) => (rowIndex(cell), columnIndex(cell))
 }
 
+/**
+ * This module represents a part of a Square
+ * that is also a set of cell indices
+ */
 module type CellSet = {
+
   include Index
 
+  /* Get all the cells belonging to this set */
   let getCells: p => list<Cell.p>
+
 }
 
+/**
+ * A Row is a set of Cells arranged in a straight horizontal line
+ */
 module Row: CellSet = {
   open Belt
   include Part
@@ -115,6 +125,9 @@ module Row: CellSet = {
   }
 }
 
+/**
+ * A Column is a set of Cells arranged in a straight vertical line
+ */
 module Column: CellSet = {
   open Belt
   include Part
