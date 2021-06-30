@@ -648,4 +648,20 @@ Jest.describe("Another way to tell if a Cell belongs to a column", (function (pa
                     }));
       }));
 
+Jest.describe("Intersect a Row and a Column to get a Cell", (function (param) {
+        return Jest.test("row-col_intersect", (function (param) {
+                      var cell = Intersection.findByRowColumn({
+                            base: 5,
+                            index: 3
+                          }, {
+                            base: 5,
+                            index: 3
+                          });
+                      return Jest.Expect.toEqual({
+                                  base: 5,
+                                  index: 13
+                                }, Jest.Expect.expect(cell));
+                    }));
+      }));
+
 /*  Not a pure module */

@@ -190,3 +190,16 @@ describe("Another way to tell if a Cell belongs to a column", () => {
     toEqual(supposedColumn, expect(columnOfCell12))
   })
 })
+
+describe("Intersect a Row and a Column to get a Cell", () => {
+  open Expect
+
+  test("row-col_intersect", () => {
+    let row: Row.p = { base: 5, index: 3 }
+    let column: Column.p = { base: 5, index: 3 }
+    let cell = Intersection.findByRowColumn(row, column)
+    let supposedCell: Cell.p = { base: 5, index: 13 }
+
+    toEqual(Some(supposedCell), expect(cell))
+  })
+})
