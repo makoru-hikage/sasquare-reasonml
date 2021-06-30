@@ -587,4 +587,32 @@ Jest.describe("All base-row-col tuple to cell indices of 5-square", (function (p
                     }));
       }));
 
+Jest.describe("Cell 17 is in Row 4 of 5-Square", (function (param) {
+        return Jest.test("cell-17_in_row-4", (function (param) {
+                      var cell = {
+                        base: 5,
+                        index: 17
+                      };
+                      var row = {
+                        base: 5,
+                        index: 4
+                      };
+                      return Jest.Expect.toBe(true, Jest.Expect.expect(BasicPart.Row.hasCell(row, cell)));
+                    }));
+      }));
+
+Jest.describe("Cell 17 isn't in Column 5 of 5-Square", (function (param) {
+        return Jest.test("cell-17_in_row-4", (function (param) {
+                      var cell = {
+                        base: 5,
+                        index: 17
+                      };
+                      var column = {
+                        base: 5,
+                        index: 5
+                      };
+                      return Jest.Expect.toBe(false, Jest.Expect.expect(BasicPart.Column.hasCell(column, cell)));
+                    }));
+      }));
+
 /*  Not a pure module */

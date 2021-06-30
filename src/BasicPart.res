@@ -109,6 +109,9 @@ module type CellSet = {
   /* Get all the cells belonging to this set */
   let getCells: p => list<Cell.p>
 
+  /* Check if a particular cell belongs in this set */
+  let hasCell: (p, Cell.p) => bool
+
 }
 
 /**
@@ -126,6 +129,10 @@ module Row: CellSet = {
     let oneToBase = Util.oneToN(b)
     List.keepMap(oneToBase, Cell.intersection(b,r))
   }
+
+  let hasCell = (p, cell) => {
+    getCells(p)-> List.has(cell, (a, b) => a == b)
+  }
 }
 
 /**
@@ -142,5 +149,9 @@ module Column: CellSet = {
     let c = getIndex(p)
     let oneToBase = Util.oneToN(b)
     List.keepMap(oneToBase, Cell.intersection(b,_,c))
+  }
+
+  let hasCell = (p, cell) => {
+    getCells(p)-> List.has(cell, (a, b) => a == b)
   }
 }

@@ -3,6 +3,7 @@
 
 var Util = require("./Util.bs.js");
 var Js_math = require("rescript/lib/js/js_math.js");
+var Caml_obj = require("rescript/lib/js/caml_obj.js");
 var Belt_List = require("rescript/lib/js/belt_List.js");
 
 function getBase(p) {
@@ -86,12 +87,17 @@ function getCells(p) {
               }));
 }
 
+function hasCell(p, cell) {
+  return Belt_List.has(getCells(p), cell, Caml_obj.caml_equal);
+}
+
 var Row = {
   getBase: getBase,
   getIndex: getIndex,
   sameSquare: sameSquare,
   isValid: isValid$1,
-  getCells: getCells
+  getCells: getCells,
+  hasCell: hasCell
 };
 
 function isValid$2(p) {
@@ -111,12 +117,17 @@ function getCells$1(p) {
               }));
 }
 
+function hasCell$1(p, cell) {
+  return Belt_List.has(getCells$1(p), cell, Caml_obj.caml_equal);
+}
+
 var Column = {
   getBase: getBase,
   getIndex: getIndex,
   sameSquare: sameSquare,
   isValid: isValid$2,
-  getCells: getCells$1
+  getCells: getCells$1,
+  hasCell: hasCell$1
 };
 
 exports.Part = Part;

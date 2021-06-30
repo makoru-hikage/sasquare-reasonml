@@ -141,3 +141,29 @@ describe("All base-row-col tuple to cell indices of 5-square", () => {
 
   })
 })
+
+describe("Cell 17 is in Row 4 of 5-Square", () => {
+  open Expect
+  open BasicPart
+
+  test("cell-17_in_row-4", () => {
+    let base = 5
+    let cell: Cell.p = { base: base, index: 17 }
+    let row: Row.p = { base: base, index: 4 }
+
+    toBe(true, expect(Row.hasCell(row, cell)))
+  })
+})
+
+describe("Cell 17 isn't in Column 5 of 5-Square", () => {
+  open Expect
+  open BasicPart
+
+  test("cell-17_in_row-4", () => {
+    let base = 5
+    let cell: Cell.p = { base: base, index: 17 }
+    let column: Column.p = { base: base, index: 5 }
+
+    toBe(false, expect(Column.hasCell(column, cell)))
+  })
+})
