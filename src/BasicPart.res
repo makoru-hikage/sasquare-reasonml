@@ -96,35 +96,35 @@ module Cell: {
 }
 
 module type CellSet = {
-    include Index
+  include Index
 
-    let getCells: p => list<Cell.p>
+  let getCells: p => list<Cell.p>
 }
 
 module Row: CellSet = {
-    open Belt
-    include Part
+  open Belt
+  include Part
 
-    let isValid = p => 1 <= getIndex(p) && getIndex(p) <= getBase(p)
+  let isValid = p => 1 <= getIndex(p) && getIndex(p) <= getBase(p)
 
-    let getCells = (p) => {
-        let b = getBase(p)
-        let r = getIndex(p)
-        let oneToBase = Util.oneToN(b)
-        List.keepMap(oneToBase, Cell.intersection(b,r))
-    }
+  let getCells = (p) => {
+    let b = getBase(p)
+    let r = getIndex(p)
+    let oneToBase = Util.oneToN(b)
+    List.keepMap(oneToBase, Cell.intersection(b,r))
+  }
 }
 
 module Column: CellSet = {
-    open Belt
-    include Part
+  open Belt
+  include Part
 
-    let isValid = p => 1 <= getIndex(p) && getIndex(p) <= getBase(p)
+  let isValid = p => 1 <= getIndex(p) && getIndex(p) <= getBase(p)
 
-    let getCells = (p) => {
-        let b = getBase(p)
-        let c = getIndex(p)
-        let oneToBase = Util.oneToN(b)
-        List.keepMap(oneToBase, Cell.intersection(b,_,c))
-    }
+  let getCells = (p) => {
+    let b = getBase(p)
+    let c = getIndex(p)
+    let oneToBase = Util.oneToN(b)
+    List.keepMap(oneToBase, Cell.intersection(b,_,c))
+  }
 }
