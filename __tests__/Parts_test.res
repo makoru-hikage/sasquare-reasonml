@@ -75,8 +75,8 @@ describe("All cells of all rows of 5-square", () => {
 
     let allRows = List.map(
       oneToBase,
-      (x): Straight.Row.p => { base: base, index: x }
-    )->List.map(Straight.Row.getCells)
+      (x): Row.p => { base: base, index: x }
+    )->List.map(Row.getCells)
     ->List.flatten
     ->List.map(Cell.getIndex)
 
@@ -102,8 +102,8 @@ describe("All cells of all columns of 5-square", () => {
 
     let allColumns = List.map(
       oneToBase,
-      (x): Straight.Column.p => { base: base, index: x }
-    )->List.map(Straight.Column.getCells)
+      (x): Column.p => { base: base, index: x }
+    )->List.map(Column.getCells)
     ->List.flatten
     ->List.map(Cell.getIndex)
 
@@ -143,7 +143,6 @@ describe("All base-row-col tuple to cell indices of 5-square", () => {
 
 describe("Cell 17 is in Row 4 of 5-Square", () => {
   open Expect
-  open Straight
 
   test("cell-17_in_row-4", () => {
     let base = 5
@@ -156,7 +155,6 @@ describe("Cell 17 is in Row 4 of 5-Square", () => {
 
 describe("Cell 17 isn't in Column 5 of 5-Square", () => {
   open Expect
-  open Straight
 
   test("cell-17_not_in_col-5", () => {
     let base = 5
@@ -167,17 +165,15 @@ describe("Cell 17 isn't in Column 5 of 5-Square", () => {
   })
 })
 
-/* describe("Another way to tell if a Cell belongs to a row", () => {
-  open Belt
+describe("Another way to tell if a Cell belongs to a row", () => {
   open Expect
-  open Straight
 
   test("cell_belongingness_by_its_row_index", () => {
     let base = 5
     let cell12: Cell.p = { base: base, index: 12 }
-    let rowOfCell12: Row.p = Cell.getRow(cell)
-    let supposedRow: Row.p = { base: base, index: 2 }
+    let rowOfCell12: Row.p = Row.rowOfCell(cell12)
+    let supposedRow: Row.p = { base: base, index: 3 }
 
-    toBe(supposedRow, expect(rowOfCell12))
+    toEqual(supposedRow, expect(rowOfCell12))
   })
-}) */
+})
