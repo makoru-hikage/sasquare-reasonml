@@ -114,7 +114,6 @@ describe("All cells of all columns of 5-square", () => {
 describe("All base-row-col tuple to cell indices of 5-square", () => {
   open Expect
   open Belt
-  open BasicPart
 
   test("b-r-c_to_b-n", () => {
     let base = 5
