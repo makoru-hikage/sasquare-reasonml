@@ -159,7 +159,7 @@ describe("Cell 17 isn't in Column 5 of 5-Square", () => {
   open Expect
   open BasicPart
 
-  test("cell-17_in_row-4", () => {
+  test("cell-17_not_in_col-5", () => {
     let base = 5
     let cell: Cell.p = { base: base, index: 17 }
     let column: Column.p = { base: base, index: 5 }
