@@ -7,7 +7,6 @@ var Curry = require("rescript/lib/js/curry.js");
 var Caml_obj = require("rescript/lib/js/caml_obj.js");
 var BasicPart = require("./BasicPart.bs.js");
 var Belt_List = require("rescript/lib/js/belt_List.js");
-var Intersection = require("./Intersection.bs.js");
 
 var getBase = BasicPart.Part.getBase;
 
@@ -25,9 +24,16 @@ function getCells(p) {
   var b = Curry._1(getBase, p);
   var c = Curry._1(getIndex, p);
   var oneToBase = Util.oneToN(b);
-  return Belt_List.keepMap(oneToBase, (function (__x) {
-                return Intersection.findByIntegers(b, __x, c);
-              }));
+  if (isValid(p)) {
+    return Belt_List.map(oneToBase, (function (n) {
+                  return {
+                          base: b,
+                          index: (Math.imul(b, n) - b | 0) + c | 0
+                        };
+                }));
+  } else {
+    return /* [] */0;
+  }
 }
 
 function hasCell(p, cell) {

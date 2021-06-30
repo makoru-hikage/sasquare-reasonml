@@ -7,7 +7,15 @@ let getCells = (p) => {
   let b = getBase(p)
   let c = getIndex(p)
   let oneToBase = Util.oneToN(b)
-  List.keepMap(oneToBase, Intersection.findByIntegers(b,_,c))
+
+  if (isValid(p)){
+    List.map(
+      oneToBase,
+      n => ({ base: b, index: b*n - b + c }:Cell.p)
+    )
+  } else {
+    list{}
+  }
 }
 
 let hasCell = (p, cell) => {
