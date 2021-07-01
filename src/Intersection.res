@@ -8,14 +8,12 @@ let findByIntegers = (b: int, r: int, c: int) => {
 }
 
 let findByRowColumn = (row, column) => {
-  let together = Row.getBase(row) === Column.getBase(column)
+  let theyAreTogether = Row.getBase(row) === Column.getBase(column)
   let b = Row.getBase(row)
   let r = Row.getIndex(row)
   let c = Column.getIndex(column)
-  let cell = findByIntegers(b,r,c)
 
-  switch together {
-  | false => None
-  | true => cell
-  }
+  if (theyAreTogether) {
+    findByIntegers(b,r,c)
+  } else { None }
 }

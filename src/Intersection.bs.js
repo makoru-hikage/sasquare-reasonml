@@ -19,13 +19,12 @@ function findByIntegers(b, r, c) {
 }
 
 function findByRowColumn(row, column) {
-  var together = Curry._1(Row.getBase, row) === Curry._1(Column.getBase, column);
+  var theyAreTogether = Curry._1(Row.getBase, row) === Curry._1(Column.getBase, column);
   var b = Curry._1(Row.getBase, row);
   var r = Curry._1(Row.getIndex, row);
   var c = Curry._1(Column.getIndex, column);
-  var cell = findByIntegers(b, r, c);
-  if (together) {
-    return cell;
+  if (theyAreTogether) {
+    return findByIntegers(b, r, c);
   }
   
 }
