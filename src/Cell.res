@@ -26,4 +26,4 @@ let intersectionSum = cell => columnIndex(cell) + rowIndex(cell)
 
 let descendingIndex = cell => getBase(cell) + intersectionDiff(cell)
 
-let ascendingIndex = cell => intersectionSum(cell) + 1
+let ascendingIndex = cell => intersectionSum(cell) - 1

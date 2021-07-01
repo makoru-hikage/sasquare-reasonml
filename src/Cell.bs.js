@@ -47,7 +47,7 @@ function descendingIndex(cell) {
 }
 
 function ascendingIndex(cell) {
-  return intersectionSum(cell) + 1 | 0;
+  return intersectionSum(cell) - 1 | 0;
 }
 
 var sameSquare = BasicPart.Part.sameSquare;
