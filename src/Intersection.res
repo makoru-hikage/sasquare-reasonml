@@ -17,3 +17,9 @@ let findByRowColumn = (row, column) => {
     findByIntegers(b,r,c)
   } else { None }
 }
+
+let intersectionDiff = cell => 
+  Cell.columnIndex(cell) - Cell.rowIndex(cell)
+
+let intersectionSum = cell => 
+  Cell.columnIndex(cell) + Cell.rowIndex(cell)
