@@ -19,3 +19,7 @@ let columnIndex = (cell) => {
 }
 
 let rowColumnPair = (cell) => (rowIndex(cell), columnIndex(cell))
+
+let intersectionDiff = cell => columnIndex(cell) - rowIndex(cell)
+
+let intersectionSum = cell => columnIndex(cell) + rowIndex(cell)
