@@ -25,3 +25,9 @@ let intersectionDiff: p => int
 
 /* Add both a cell's row and column index */
 let intersectionSum: p => int
+
+/* Get index of the descending slant it belongs to */
+let descendingIndex: p => int
+
+/* Get index of the ascending slant it belongs to */
+let ascendingIndex: p => int

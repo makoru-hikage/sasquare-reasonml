@@ -42,6 +42,14 @@ function intersectionSum(cell) {
   return columnIndex(cell) + rowIndex(cell) | 0;
 }
 
+function descendingIndex(cell) {
+  return Curry._1(getBase, cell) + intersectionDiff(cell) | 0;
+}
+
+function ascendingIndex(cell) {
+  return intersectionSum(cell) + 1 | 0;
+}
+
 var sameSquare = BasicPart.Part.sameSquare;
 
 exports.getBase = getBase;
@@ -53,4 +61,6 @@ exports.columnIndex = columnIndex;
 exports.rowColumnPair = rowColumnPair;
 exports.intersectionDiff = intersectionDiff;
 exports.intersectionSum = intersectionSum;
+exports.descendingIndex = descendingIndex;
+exports.ascendingIndex = ascendingIndex;
 /* No side effect */
