@@ -20,16 +20,24 @@ function isValid(p) {
   }
 }
 
-function getCells(p) {
+function nthCell(p, n) {
   var b = Curry._1(getBase, p);
   var r = Curry._1(getIndex, p);
+  if (1 <= n && n <= b && isValid(p)) {
+    return {
+            base: b,
+            index: (Math.imul(b, r) - b | 0) + n | 0
+          };
+  }
+  
+}
+
+function getCells(p) {
+  var b = Curry._1(getBase, p);
   var oneToBase = Util.oneToN(b);
   if (isValid(p)) {
-    return Belt_List.map(oneToBase, (function (n) {
-                  return {
-                          base: b,
-                          index: (Math.imul(b, r) - b | 0) + n | 0
-                        };
+    return Belt_List.keepMap(oneToBase, (function (param) {
+                  return nthCell(p, param);
                 }));
   } else {
     return /* [] */0;
@@ -55,5 +63,6 @@ exports.sameSquare = sameSquare;
 exports.isValid = isValid;
 exports.getCells = getCells;
 exports.hasCell = hasCell;
+exports.nthCell = nthCell;
 exports.rowOfCell = rowOfCell;
 /* No side effect */

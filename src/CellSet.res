@@ -12,4 +12,7 @@ module type CellSet = {
   /* Check if a particular cell belongs in this set */
   let hasCell: (p, Cell.p) => bool
 
+  /* Get the nth cell of a set */
+  let nthCell: (p, int) => option<Cell.p>
+
 }
