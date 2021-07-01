@@ -6,6 +6,9 @@ module type CellSet = {
 
   include BasicPart.Index
 
+  /* Get the supposed length/cardinality of the set */
+  let getLength: p => int
+
   /* Get all the cells belonging to this set */
   let getCells: p => list<Cell.p>
 

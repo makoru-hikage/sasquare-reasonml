@@ -12,6 +12,8 @@ var getBase = BasicPart.Part.getBase;
 
 var getIndex = BasicPart.Part.getIndex;
 
+var getLength = Curry.__1(getBase);
+
 function isValid(p) {
   if (1 <= Curry._1(getIndex, p)) {
     return Curry._1(getIndex, p) <= Curry._1(getBase, p);
@@ -61,6 +63,7 @@ exports.getBase = getBase;
 exports.getIndex = getIndex;
 exports.sameSquare = sameSquare;
 exports.isValid = isValid;
+exports.getLength = getLength;
 exports.getCells = getCells;
 exports.hasCell = hasCell;
 exports.nthCell = nthCell;

@@ -1,6 +1,8 @@
 open Belt
 include BasicPart.Part
 
+let getLength = p => getBase(p)
+
 let isValid = p => 1 <= getIndex(p) && getIndex(p) <= getBase(p)
 
 let nthCell = (p, n) => {
