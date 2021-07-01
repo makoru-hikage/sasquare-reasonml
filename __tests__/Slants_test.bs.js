@@ -4,6 +4,7 @@
 var Cell = require("../src/Cell.bs.js");
 var Jest = require("@glennsl/bs-jest/src/jest.bs.js");
 var Util = require("../src/Util.bs.js");
+var Square = require("../src/Square.bs.js");
 var Belt_List = require("rescript/lib/js/belt_List.js");
 var DescendingSlant = require("../src/DescendingSlant.bs.js");
 
@@ -188,8 +189,8 @@ Jest.describe("Get the ascending indices of all cells in 5-square", (function (p
       }));
 
 Jest.describe("All cells of all descending slants of 5-square", (function (param) {
-        return Jest.test("cells_of_rows", (function (param) {
-                      var numOfAllSlants = 9;
+        return Jest.test("cells_of_descending_slants", (function (param) {
+                      var numOfAllSlants = Square.totalSlants(5);
                       var supposedSlants_0 = {
                         hd: 21,
                         tl: /* [] */0

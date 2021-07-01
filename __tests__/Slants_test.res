@@ -52,7 +52,7 @@ describe("All cells of all descending slants of 5-square", () => {
 
   test ("cells_of_descending_slants", () => {
     let base = 5
-    let numOfAllSlants = base*2 - 1
+    let numOfAllSlants = Square.totalSlants(base)
 
     let slant1 = list{21}
     let slant2 = list{16,22}
