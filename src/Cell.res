@@ -18,7 +18,7 @@ let columnIndex = (cell) => {
   index + base - base*rowIndex(cell)
 }
 
-let rowColumnPair = (cell) => (rowIndex(cell), columnIndex(cell))
+let rowColumnPair = cell => (rowIndex(cell), columnIndex(cell))
 
 let intersectionDiff = cell => columnIndex(cell) - rowIndex(cell)
 

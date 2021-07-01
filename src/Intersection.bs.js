@@ -29,16 +29,6 @@ function findByRowColumn(row, column) {
   
 }
 
-function intersectionDiff(cell) {
-  return Cell.columnIndex(cell) - Cell.rowIndex(cell) | 0;
-}
-
-function intersectionSum(cell) {
-  return Cell.columnIndex(cell) + Cell.rowIndex(cell) | 0;
-}
-
 exports.findByIntegers = findByIntegers;
 exports.findByRowColumn = findByRowColumn;
-exports.intersectionDiff = intersectionDiff;
-exports.intersectionSum = intersectionSum;
 /* No side effect */

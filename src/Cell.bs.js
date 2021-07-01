@@ -34,6 +34,14 @@ function rowColumnPair(cell) {
         ];
 }
 
+function intersectionDiff(cell) {
+  return columnIndex(cell) - rowIndex(cell) | 0;
+}
+
+function intersectionSum(cell) {
+  return columnIndex(cell) + rowIndex(cell) | 0;
+}
+
 var sameSquare = BasicPart.Part.sameSquare;
 
 exports.getBase = getBase;
@@ -43,4 +51,6 @@ exports.isValid = isValid;
 exports.rowIndex = rowIndex;
 exports.columnIndex = columnIndex;
 exports.rowColumnPair = rowColumnPair;
+exports.intersectionDiff = intersectionDiff;
+exports.intersectionSum = intersectionSum;
 /* No side effect */
