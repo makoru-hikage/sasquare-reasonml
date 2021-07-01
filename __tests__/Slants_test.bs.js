@@ -5,6 +5,7 @@ var Cell = require("../src/Cell.bs.js");
 var Jest = require("@glennsl/bs-jest/src/jest.bs.js");
 var Util = require("../src/Util.bs.js");
 var Belt_List = require("rescript/lib/js/belt_List.js");
+var DescendingSlant = require("../src/DescendingSlant.bs.js");
 
 Jest.describe("Get the descending indices of all cells in 5-square", (function (param) {
         return Jest.test("desc_indices_of_5-squares", (function (param) {
@@ -183,6 +184,124 @@ Jest.describe("Get the ascending indices of all cells in 5-square", (function (p
                                     }
                                   }
                                 }, Jest.Expect.expect(allAscendingIndices));
+                    }));
+      }));
+
+Jest.describe("All cells of all descending slants of 5-square", (function (param) {
+        return Jest.test("cells_of_rows", (function (param) {
+                      var numOfAllSlants = 9;
+                      var supposedSlants_0 = {
+                        hd: 21,
+                        tl: /* [] */0
+                      };
+                      var supposedSlants_1 = {
+                        hd: {
+                          hd: 16,
+                          tl: {
+                            hd: 22,
+                            tl: /* [] */0
+                          }
+                        },
+                        tl: {
+                          hd: {
+                            hd: 11,
+                            tl: {
+                              hd: 17,
+                              tl: {
+                                hd: 23,
+                                tl: /* [] */0
+                              }
+                            }
+                          },
+                          tl: {
+                            hd: {
+                              hd: 6,
+                              tl: {
+                                hd: 12,
+                                tl: {
+                                  hd: 18,
+                                  tl: {
+                                    hd: 24,
+                                    tl: /* [] */0
+                                  }
+                                }
+                              }
+                            },
+                            tl: {
+                              hd: {
+                                hd: 1,
+                                tl: {
+                                  hd: 7,
+                                  tl: {
+                                    hd: 13,
+                                    tl: {
+                                      hd: 19,
+                                      tl: {
+                                        hd: 25,
+                                        tl: /* [] */0
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              tl: {
+                                hd: {
+                                  hd: 2,
+                                  tl: {
+                                    hd: 8,
+                                    tl: {
+                                      hd: 14,
+                                      tl: {
+                                        hd: 20,
+                                        tl: /* [] */0
+                                      }
+                                    }
+                                  }
+                                },
+                                tl: {
+                                  hd: {
+                                    hd: 3,
+                                    tl: {
+                                      hd: 9,
+                                      tl: {
+                                        hd: 15,
+                                        tl: /* [] */0
+                                      }
+                                    }
+                                  },
+                                  tl: {
+                                    hd: {
+                                      hd: 4,
+                                      tl: {
+                                        hd: 10,
+                                        tl: /* [] */0
+                                      }
+                                    },
+                                    tl: {
+                                      hd: {
+                                        hd: 5,
+                                        tl: /* [] */0
+                                      },
+                                      tl: /* [] */0
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      };
+                      var supposedSlants = {
+                        hd: supposedSlants_0,
+                        tl: supposedSlants_1
+                      };
+                      var allSlants = Belt_List.map(Belt_List.flatten(Belt_List.map(Belt_List.map(Util.oneToN(numOfAllSlants), (function (x) {
+                                          return {
+                                                  base: 5,
+                                                  index: x
+                                                };
+                                        })), DescendingSlant.getCells)), Cell.getIndex);
+                      return Jest.Expect.toEqual(Belt_List.flatten(supposedSlants), Jest.Expect.expect(allSlants));
                     }));
       }));
 
