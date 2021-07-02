@@ -34,8 +34,8 @@ Jest.describe("Two basic parts don't belong to the same square ", (function (par
                     }));
       }));
 
-Jest.describe("Cell is valid", (function (param) {
-        return Jest.test("cell_is_valid", (function (param) {
+Jest.describe("Cell is invalid", (function (param) {
+        return Jest.test("cell_is_invalid", (function (param) {
                       return Jest.Expect.toBe(false, Jest.Expect.expect(Cell.isValid({
                                           base: 5,
                                           index: 27

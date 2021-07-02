@@ -1,6 +1,5 @@
 open Jest
 
-
 describe("Two basic parts belong to the same square ", () => {
   open Expect
 
@@ -23,10 +22,10 @@ describe("Two basic parts don't belong to the same square ", () => {
     })
 })
 
-describe("Cell is valid", () => {
+describe("Cell is invalid", () => {
   open Expect
 
-  test ("cell_is_valid", () => {
+  test ("cell_is_invalid", () => {
       let cell: Cell.p = { base: 5, index: 27 }
 
       toBe(false, expect(Cell.isValid(cell)))
