@@ -86,3 +86,44 @@ describe("All cells of all descending slants of 5-square", () => {
     toEqual(List.flatten(supposedSlants), expect(allSlants))
   })
 })
+
+describe("All cells of all ascending slants of 5-square", () => {
+  open Belt
+  open Expect
+
+  test ("cells_of_ascending_slants", () => {
+    let base = 5
+    let numOfAllSlants = Square.totalSlants(base)
+
+    let slant1 = list{1}
+    let slant2 = list{6,2}
+    let slant3 = list{11,7,3}
+    let slant4 = list{16,12,8,4}
+    let slant5 = list{21,17,13,9,5}
+    let slant6 = list{22,18,14,10}
+    let slant7 = list{23,19,15}
+    let slant8 = list{24,20}
+    let slant9 = list{25}
+
+    let supposedSlants = list{
+      slant1,
+      slant2,
+      slant3,
+      slant4,
+      slant5,
+      slant6,
+      slant7,
+      slant8,
+      slant9
+    }
+
+    let allSlants = List.map(
+      Util.oneToN(numOfAllSlants),
+      (x): AscendingSlant.p => { base: base, index: x }
+    )->List.map(AscendingSlant.getCells)
+    ->List.flatten
+    ->List.map(Cell.getIndex)
+
+    toEqual(List.flatten(supposedSlants), expect(allSlants))
+  })
+})
