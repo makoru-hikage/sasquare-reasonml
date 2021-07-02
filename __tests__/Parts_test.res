@@ -111,12 +111,12 @@ describe("All cells of all columns of 5-square", () => {
 })
 
 describe("All base-row-col tuple to cell indices of 5-square", () => {
-  open Expect
   open Belt
+  open Expect
 
   test("b-r-c_to_b-n", () => {
     let base = 5
-    let oneToBase = List.makeBy(base, i => i+1)
+    let oneToBase = Util.oneToN(base)
 
     // Just create Cells using the Intersection function
     let a = List.map(

@@ -420,9 +420,7 @@ Jest.describe("All cells of all columns of 5-square", (function (param) {
 
 Jest.describe("All base-row-col tuple to cell indices of 5-square", (function (param) {
         return Jest.test("b-r-c_to_b-n", (function (param) {
-                      var oneToBase = Belt_List.makeBy(5, (function (i) {
-                              return i + 1 | 0;
-                            }));
+                      var oneToBase = Util.oneToN(5);
                       var a = Belt_List.map(oneToBase, (function (x, __x) {
                               return Intersection.findByIntegers(5, __x, x);
                             }));
