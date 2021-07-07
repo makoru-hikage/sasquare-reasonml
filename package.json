@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "rescript",
-    "start": "rescript build -w",
+    "start": "react-scripts start",
     "pretest": "rescript build -with-deps",
     "test": "rescript build -with-deps && jest"
   },
@@ -22,12 +22,28 @@
     "@babel/preset-env": "^7.14.7",
     "@glennsl/bs-jest": "^0.7.0",
     "babel-core": "^6.26.3",
-    "jest": "^27.0.4",
     "rescript": "^9.1.4"
   },
   "babel": {
     "presets": [
       "@babel/preset-env"
+    ]
+  },
+  "dependencies": {
+    "@rescript/react": "^0.10.3",
+    "react": "^17.0.2",
+    "react-scripts": "^4.0.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }
