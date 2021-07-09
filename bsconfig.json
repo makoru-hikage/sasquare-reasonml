@@ -1,5 +1,6 @@
 {
     "name": "sasquare-reasonml",
+    "reason": { "react-jsx": 3 },
     "sources": [
       {
         "dir": "__tests__",
@@ -17,7 +18,9 @@
       }
     ],
     "suffix": ".bs.js",
-    "bs-dependencies": [],
+    "bs-dependencies": [
+      "@rescript/react"
+    ],
     "bs-dev-dependencies": [
       "@glennsl/bs-jest"
     ]

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "build": "rescript",
+    "build": "rescript && react-scripts build",
     "start": "react-scripts start",
     "pretest": "rescript build -with-deps",
     "test": "rescript build -with-deps && jest"
@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/makoru-hikage/sasquare-reasonml/issues"
   },
-  "homepage": "https://github.com/makoru-hikage/sasquare-reasonml#readme",
+  "homepage": ".",
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
     "@glennsl/bs-jest": "^0.7.0",
