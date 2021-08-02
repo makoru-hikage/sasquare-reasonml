@@ -2,10 +2,10 @@
 
 import * as Cell from "./Cell.bs.js";
 import * as Util from "./Util.bs.js";
-import * as Curry from "../../node_modules/rescript/lib/es6/curry.js";
+import * as Curry from "rescript/lib/es6/curry.js";
 import * as BasicPart from "./BasicPart.bs.js";
-import * as Belt_List from "../../node_modules/rescript/lib/es6/belt_List.js";
-import * as Pervasives from "../../node_modules/rescript/lib/es6/pervasives.js";
+import * as Belt_List from "rescript/lib/es6/belt_List.js";
+import * as Pervasives from "rescript/lib/es6/pervasives.js";
 
 var getBase = BasicPart.Part.getBase;
 

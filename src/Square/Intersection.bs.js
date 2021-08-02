@@ -2,7 +2,7 @@
 
 import * as Row from "./Row.bs.js";
 import * as Cell from "./Cell.bs.js";
-import * as Curry from "../../node_modules/rescript/lib/es6/curry.js";
+import * as Curry from "rescript/lib/es6/curry.js";
 import * as Column from "./Column.bs.js";
 
 function findByIntegers(b, r, c) {

@@ -2,10 +2,10 @@
 
 import * as Cell from "./Cell.bs.js";
 import * as Util from "./Util.bs.js";
-import * as Curry from "../../node_modules/rescript/lib/es6/curry.js";
-import * as Caml_obj from "../../node_modules/rescript/lib/es6/caml_obj.js";
+import * as Curry from "rescript/lib/es6/curry.js";
+import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
 import * as BasicPart from "./BasicPart.bs.js";
-import * as Belt_List from "../../node_modules/rescript/lib/es6/belt_List.js";
+import * as Belt_List from "rescript/lib/es6/belt_List.js";
 
 var getBase = BasicPart.Part.getBase;
 

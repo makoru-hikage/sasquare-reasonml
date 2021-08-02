@@ -2,9 +2,9 @@
 
 import * as Row from "./Row.bs.js";
 import * as Cell from "./Cell.bs.js";
-import * as Curry from "../../node_modules/rescript/lib/es6/curry.js";
+import * as Curry from "rescript/lib/es6/curry.js";
 import * as Column from "./Column.bs.js";
-import * as Js_math from "../../node_modules/rescript/lib/es6/js_math.js";
+import * as Js_math from "rescript/lib/es6/js_math.js";
 import * as Intersection from "./Intersection.bs.js";
 
 function oddCenterIndex(length) {
