@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "build": "vite build",
+    "build": "node change_bsconfig es6 && vite build",
     "start": "vite",
     "preview": "vite preview",
     "serve": "vite serve",
     "pretest": "rescript build -with-deps",
-    "test": "rescript build -with-deps && jest"
+    "test": "node change_bsconfig commonjs && rescript build && jest"
   },
   "repository": {
     "type": "git",
